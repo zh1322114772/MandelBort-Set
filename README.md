@@ -1,7 +1,7 @@
 # MandelBort-Set
 Simple implementation of MandelBrot set with C++ SDL2
 
-# Contorl
+# Control
 Move with WASD keys, zoom with z and shrink with x.  
 
 # Ajust the performance

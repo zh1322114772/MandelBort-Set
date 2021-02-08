@@ -9,5 +9,5 @@ by changing #define THREAD 16 to other numbers to have different processing thre
 by remove #define USE_DOUBLE to use single-precision floating point. 
 
 # Screenshots
-![Screenshot](screenshot.bmp)
+![Screenshot](screenshot0.bmp)
 ![Screenshot](screenshot1.bmp)

@@ -69,8 +69,8 @@ int main(int argc, char* argv[])
 	//key events
 	bool zoom = false;
 	bool shrink = false;
-	unit_t zoom_factor = 0.9;
-	unit_t move_speed = 0.2;
+	unit_t zoom_factor = 0.5;
+	unit_t move_speed = 1.0;
 	unit_t scale = 1.0;
 	bool up = false;
 	bool down = false;
@@ -81,8 +81,6 @@ int main(int argc, char* argv[])
 	int last_tick = 0;
 	int current_tick = 0;
 	double delta_t = 0;
-
-	std::cout << sizeof(unit_t) << std::endl;
 
 	//render loop
 	while (dont_quit)
@@ -135,15 +133,15 @@ int main(int argc, char* argv[])
 
 		if (zoom || shrink) 
 		{
-			unit_t s = (zoom) ? zoom_factor : 1.0 / zoom_factor;
-			renderArea[0] = renderArea[0] * s;
-			renderArea[1] = renderArea[1] * s;
-			scale *= s;
+			unit_t s = ((zoom) ? -zoom_factor : zoom_factor) * delta_t;
+			renderArea[0] += renderArea[0] * s;
+			renderArea[1] += renderArea[1] * s;
+			scale += scale * s;
 		}
 		
 		//render window offset
-		renderOffset[0] += move_speed * renderArea[0]*(-left + right);
-		renderOffset[1] += move_speed * renderArea[0] * (-up + down);
+		renderOffset[0] += move_speed * renderArea[0] * (-left + right) * delta_t;
+		renderOffset[1] += move_speed * renderArea[0] * (-up + down) * delta_t;
 
 		//set render range
 		unit_t range0[2] = { renderOffset[0] - renderArea[0], renderOffset[1] - renderArea[1] };

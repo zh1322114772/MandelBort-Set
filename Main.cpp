@@ -6,6 +6,7 @@
 #define USE_DOUBLE
 #define BOUND_SQUARE 4.0
 #define THREADS 16
+#define USE_AVX
 int iteration = 64;
 
 //use either single precision or double precision
